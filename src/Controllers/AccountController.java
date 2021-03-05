@@ -1,9 +1,21 @@
 package Controllers;
 
 import java.security.*;
+
+import Models.Users.User;
+
 import java.math.*;
 
 public class AccountController {
+
+    private static User currentUser;
+
+    public void setCurrentUser(User user){
+        AccountController.currentUser = user;
+    }
+    public User getCurrentUser(){
+        return AccountController.currentUser;
+    }
 
     public String TextToMD5(String s) throws NoSuchAlgorithmException {
         MessageDigest m = MessageDigest.getInstance("MD5");
