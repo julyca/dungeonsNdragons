@@ -1,0 +1,4 @@
+# Ignorar todos os arquivos e sub-pastas localizados na pasta bin/
+bin/
+# Ignorar todos os arquivos compilados de Java
+*.class
