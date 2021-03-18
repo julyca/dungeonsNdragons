@@ -139,11 +139,13 @@ public class SystemController {
 
     private void rollTheDice(){
         Random rand = new Random();
-
+        int dice = 0;
         System.out.println("\n\n\t\t~ ~ ~ ROLL THE DICE ~ ~ ~ \n");
-
-        int dice = Integer.parseInt(this.console.readLine("Digite o dado a ser rodado (ex. d20, d10, d12): ").toLowerCase().replace("d", ""));
-        System.out.println("\n\nResultado: " + (rand.nextInt(dice)+1));
-
+        do {
+            dice = Integer.parseInt(this.console.readLine("Digite o dado a ser rodado (ex. d20, d10, d12) [digite somente 0 p/ sair]: ").toLowerCase().replace("d", ""));
+            if (dice != 0) {
+                System.out.println("\n\nResultado: " + (rand.nextInt(dice)+1));
+            }
+        } while (dice!=0);
     }
 }
