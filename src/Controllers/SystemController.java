@@ -1,7 +1,9 @@
 package Controllers;
 
 import java.io.Console;
-import java.util.Random; 
+import java.util.Random;
+
+import Models.Dice;
 import Models.Users.User;
 
 public class SystemController {
@@ -138,14 +140,15 @@ public class SystemController {
     }
 
     private void rollTheDice(){
-        Random rand = new Random();
-        int dice = 0;
+        Boolean keepRolling = true;
         System.out.println("\n\n\t\t~ ~ ~ ROLL THE DICE ~ ~ ~ \n");
-        do {
-            dice = Integer.parseInt(this.console.readLine("Digite o dado a ser rodado (ex. d20, d10, d12) [digite somente 0 p/ sair]: ").toLowerCase().replace("d", ""));
-            if (dice != 0) {
-                System.out.println("\n\nResultado: " + (rand.nextInt(dice)+1));
+        do {// HACK: forçando erro pra sair do loop
+            try {
+                Dice d = new Dice(Integer.parseInt(this.console.readLine("Digite o dado a ser rodado (ex. d20, d10, d12) [digite somente 'q' p/ sair]: ").toLowerCase().replace("d", "")));
+                System.out.println("\n\nResultado: " + (d.rollTheDice()));
+            } catch (Exception e) {
+                keepRolling = false;
             }
-        } while (dice!=0);
+        } while (keepRolling);
     }
 }
